@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sofía Reyes — Diseñadora Gráfica</title>
+
+  <!-- Google Fonts: Playfair Display para títulos, Inter para cuerpo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================
+       RESET Y VARIABLES GLOBALES
+       ========================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-negro:    #0d0d0d;
+      --color-blanco:   #ffffff;
+      --color-acento:   #E63946;
+      --color-gris:     #f5f5f5;
+      --color-gris-med: #888888;
+      --fuente-titulo:  'Playfair Display', serif;
+      --fuente-cuerpo:  'Inter', sans-serif;
+      --max-ancho:      1100px;
+      --transicion:     0.25s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--fuente-cuerpo);
+      font-size: 1rem;
+      color: var(--color-negro);
+      background-color: var(--color-blanco);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================================
+       NAVEGACIÓN
+       ========================================= */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: var(--color-negro);
+      border-bottom: 2px solid var(--color-acento);
+    }
+
+    .nav-inner {
+      max-width: var(--max-ancho);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--fuente-titulo);
+      font-size: 1.25rem;
+      color: var(--color-blanco);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--color-acento);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--color-blanco);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color var(--transicion);
+    }
+
+    .nav-links a:hover {
+      color: var(--color-acento);
+    }
+
+    /* =========================================
+       SECCIÓN HERO
+       ========================================= */
+    #hero {
+      min-height: 100vh;
+      background-color: var(--color-negro);
+      display: flex;
+      align-items: center;
+      padding-top: 60px; /* compensa la nav fija */
+    }
+
+    .hero-inner {
+      max-width: var(--max-ancho);
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    /* Columna de texto del hero */
+    .hero-texto {
+      flex: 1;
+    }
+
+    .hero-etiqueta {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      margin-bottom: 1rem;
+    }
+
+    .hero-titulo {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--color-blanco);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Cursiva para el apellido como detalle tipográfico */
+    .hero-titulo em {
+      font-style: italic;
+      color: var(--color-acento);
+    }
+
+    .hero-descripcion {
+      font-size: 1.05rem;
+      color: var(--color-gris-med);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background-color: var(--color-acento);
+      color: var(--color-blanco);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 2px solid var(--color-acento);
+      transition: background-color var(--transicion), color var(--transicion);
+    }
+
+    .hero-cta:hover {
+      background-color: transparent;
+      color: var(--color-acento);
+    }
+
+    /* Imagen decorativa del hero (placeholder con CSS) */
+    .hero-imagen {
+      flex: 0 0 320px;
+      height: 400px;
+      background-color: #1a1a1a;
+      border: 2px solid #2a2a2a;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Ornamento geométrico usando solo CSS */
+    .hero-imagen::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 2px solid var(--color-acento);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      opacity: 0.4;
+    }
+
+    .hero-imagen::after {
+      content: 'SR';
+      font-family: var(--fuente-titulo);
+      font-size: 5rem;
+      color: var(--color-blanco);
+      opacity: 0.15;
+      letter-spacing: -0.05em;
+    }
+
+    /* =========================================
+       SECCIÓN SOBRE MÍ
+       ========================================= */
+    #sobre-mi {
+      background-color: var(--color-blanco);
+      padding: 6rem 1.5rem;
+    }
+
+    .sobre-inner {
+      max-width: var(--max-ancho);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    /* Imagen de perfil (placeholder) */
+    .sobre-imagen {
+      flex: 0 0 280px;
+      height: 340px;
+      background-color: var(--color-gris);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Borde acento desplazado como detalle de diseño */
+    .sobre-imagen::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border: 2px solid var(--color-acento);
+      z-index: -1;
+    }
+
+    .sobre-imagen-icono {
+      font-family: var(--fuente-titulo);
+      font-size: 6rem;
+      color: var(--color-gris-med);
+      opacity: 0.4;
+      user-select: none;
+    }
+
+    /* Texto de la sección sobre mí */
+    .sobre-contenido {
+      flex: 1;
+    }
+
+    .seccion-etiqueta {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      margin-bottom: 0.75rem;
+    }
+
+    .seccion-titulo {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .sobre-texto {
+      color: #444444;
+      margin-bottom: 1rem;
+    }
+
+    /* Lista de habilidades */
+    .habilidades {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.75rem;
+    }
+
+    .habilidades li {
+      padding: 0.35rem 0.9rem;
+      border: 1.5px solid var(--color-negro);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: background-color var(--transicion), color var(--transicion), border-color var(--transicion);
+    }
+
+    .habilidades li:hover {
+      background-color: var(--color-acento);
+      color: var(--color-blanco);
+      border-color: var(--color-acento);
+    }
+
+    /* =========================================
+       SECCIÓN PROYECTOS
+       ========================================= */
+    #proyectos {
+      background-color: var(--color-gris);
+      padding: 6rem 1.5rem;
+    }
+
+    .proyectos-inner {
+      max-width: var(--max-ancho);
+      margin: 0 auto;
+    }
+
+    .seccion-encabezado {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Contenedor de cards con Flexbox */
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      justify-content: center;
+    }
+
+    /* Card individual de proyecto */
+    .card {
+      flex: 1 1 300px;
+      max-width: 340px;
+      background-color: var(--color-blanco);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-bottom: 3px solid transparent;
+      transition: border-color var(--transicion), transform var(--transicion);
+    }
+
+    .card:hover {
+      border-color: var(--color-acento);
+      transform: translateY(-4px);
+    }
+
+    /* Imagen de la card (placeholder con color de fondo distinto en cada una) */
+    .card-imagen {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fuente-titulo);
+      font-size: 3.5rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: -0.03em;
+    }
+
+    .card-imagen--1 { background-color: #1a1a2e; }
+    .card-imagen--2 { background-color: #16213e; }
+    .card-imagen--3 { background-color: #0f3460; }
+
+    /* Contenido textual de la card */
+    .card-cuerpo {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-categoria {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-titulo {
+      font-family: var(--fuente-titulo);
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-descripcion {
+      font-size: 0.9rem;
+      color: #555555;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-enlace {
+      align-self: flex-start;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-negro);
+      border-bottom: 2px solid var(--color-acento);
+      padding-bottom: 1px;
+      transition: color var(--transicion);
+    }
+
+    .card-enlace:hover {
+      color: var(--color-acento);
+    }
+
+    /* =========================================
+       SECCIÓN CONTACTO
+       ========================================= */
+    #contacto {
+      background-color: var(--color-negro);
+      padding: 6rem 1.5rem;
+    }
+
+    .contacto-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Título en blanco con acento */
+    .contacto-titulo {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--color-blanco);
+      margin-bottom: 1rem;
+    }
+
+    .contacto-titulo span {
+      color: var(--color-acento);
+    }
+
+    .contacto-subtitulo {
+      color: var(--color-gris-med);
+      margin-bottom: 3rem;
+    }
+
+    /* Formulario de contacto */
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .campo-grupo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .campo-grupo label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gris-med);
+    }
+
+    /* Estilo base para inputs y textarea */
+    .campo-grupo input,
+    .campo-grupo textarea {
+      background-color: transparent;
+      border: 1.5px solid #333333;
+      color: var(--color-blanco);
+      font-family: var(--fuente-cuerpo);
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color var(--transicion);
+      width: 100%;
+      resize: vertical;
+    }
+
+    .campo-grupo input:focus,
+    .campo-grupo textarea:focus {
+      border-color: var(--color-acento);
+    }
+
+    /* Fila de dos columnas para nombre y email */
+    .fila-doble {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .fila-doble .campo-grupo {
+      flex: 1;
+    }
+
+    .boton-enviar {
+      align-self: center;
+      margin-top: 0.5rem;
+      padding: 0.9rem 2.5rem;
+      background-color: var(--color-acento);
+      color: var(--color-blanco);
+      font-family: var(--fuente-cuerpo);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 2px solid var(--color-acento);
+      cursor: pointer;
+      transition: background-color var(--transicion), color var(--transicion);
+    }
+
+    .boton-enviar:hover {
+      background-color: transparent;
+      color: var(--color-acento);
+    }
+
+    /* =========================================
+       PIE DE PÁGINA
+       ========================================= */
+    footer {
+      background-color: #0a0a0a;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid #1f1f1f;
+    }
+
+    .footer-texto {
+      font-size: 0.8rem;
+      color: #555555;
+    }
+
+    .footer-texto span {
+      color: var(--color-acento);
+    }
+
+    /* =========================================
+       MEDIA QUERIES — DISEÑO RESPONSIVE
+       ========================================= */
+
+    /* Tablet: 768px hacia abajo */
+    @media (max-width: 768px) {
+      /* Hero: columna única */
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 1.5rem;
+      }
+
+      .hero-descripcion {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-imagen {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 320px;
+        height: 260px;
+      }
+
+      /* Sobre mí: columna única */
+      .sobre-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2.5rem;
+      }
+
+      .sobre-imagen {
+        flex: 0 0 auto;
+        width: 220px;
+        height: 260px;
+        margin: 0 auto;
+      }
+
+      /* Fila doble del formulario en columna */
+      .fila-doble {
+        flex-direction: column;
+      }
+
+      /* Navegación: ocultar links en móvil pequeño */
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Móvil: 480px hacia abajo */
+    @media (max-width: 480px) {
+      #sobre-mi,
+      #proyectos,
+      #contacto {
+        padding: 4rem 1rem;
+      }
+
+      .hero-titulo {
+        font-size: 2.2rem;
+      }
+
+      /* Cards en móvil ocupan todo el ancho */
+      .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================
+       NAVEGACIÓN FIJA
+       ========================================= -->
+  <nav aria-label="Navegación principal">
+    <div class="nav-inner">
+      <span class="nav-logo">Sofía<span>.</span>Reyes</span>
+      <ul class="nav-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       SECCIÓN 1: HERO
+       Presenta a Sofía con su nombre, rol y CTA.
+       ========================================= -->
+  <section id="hero" aria-label="Presentación">
+    <div class="hero-inner">
+
+      <div class="hero-texto">
+        <span class="hero-etiqueta">Diseñadora Gráfica &amp; Visual</span>
+        <h1 class="hero-titulo">
+          Hola, soy<br />
+          Sofía <em>Reyes</em>
+        </h1>
+        <p class="hero-descripcion">
+          Creo identidades visuales que cuentan historias.
+          Me especializo en branding, diseño editorial y
+          dirección de arte para marcas con propósito.
+        </p>
+        <a href="#proyectos" class="hero-cta">Ver mis proyectos</a>
+      </div>
+
+      <!-- Placeholder de imagen de portada -->
+      <div class="hero-imagen" role="img" aria-label="Foto de Sofía Reyes"></div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECCIÓN 2: SOBRE MÍ
+       Biografía breve y lista de habilidades.
+       ========================================= -->
+  <section id="sobre-mi" aria-label="Sobre mí">
+    <div class="sobre-inner">
+
+      <!-- Placeholder de foto de perfil -->
+      <div class="sobre-imagen" role="img" aria-label="Retrato de Sofía Reyes">
+        <span class="sobre-imagen-icono" aria-hidden="true">SR</span>
+      </div>
+
+      <div class="sobre-contenido">
+        <span class="seccion-etiqueta">Sobre mí</span>
+        <h2 class="seccion-titulo">Diseño con intención,<br />comunico con forma.</h2>
+        <p class="sobre-texto">
+          Soy diseñadora gráfica con más de 5 años de experiencia
+          trabajando con startups y agencias en América Latina y
+          Europa. Me apasiona encontrar el punto donde la estética
+          y la función se convierten en una sola cosa.
+        </p>
+        <p class="sobre-texto">
+          Actualmente disponible para proyectos freelance
+          de branding, identidad corporativa y diseño editorial.
+        </p>
+
+        <!-- Habilidades como etiquetas interactivas -->
+        <ul class="habilidades" aria-label="Habilidades">
+          <li>Branding</li>
+          <li>Ilustración</li>
+          <li>Dirección de Arte</li>
+          <li>Diseño Editorial</li>
+          <li>Tipografía</li>
+          <li>Adobe CC</li>
+          <li>Figma</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECCIÓN 3: PROYECTOS
+       Tres cards de proyectos destacados.
+       ========================================= -->
+  <section id="proyectos" aria-label="Proyectos">
+    <div class="proyectos-inner">
+
+      <header class="seccion-encabezado">
+        <span class="seccion-etiqueta">Trabajos seleccionados</span>
+        <h2 class="seccion-titulo">Proyectos</h2>
+      </header>
+
+      <div class="cards-grid">
+
+        <!-- Card 1: Proyecto de branding -->
+        <article class="card">
+          <div class="card-imagen card-imagen--1" role="img" aria-label="Vista previa de Nocturne">
+            01
+          </div>
+          <div class="card-cuerpo">
+            <span class="card-categoria">Identidad de Marca</span>
+            <h3 class="card-titulo">Nocturne Studio</h3>
+            <p class="card-descripcion">
+              Identidad visual completa para un estudio de fotografía
+              de autor. Sistema tipográfico, paleta monocromática
+              y aplicaciones en papelería y web.
+            </p>
+            <a href="#" class="card-enlace" aria-label="Ver proyecto Nocturne Studio">Ver proyecto →</a>
+          </div>
+        </article>
+
+        <!-- Card 2: Proyecto editorial -->
+        <article class="card">
+          <div class="card-imagen card-imagen--2" role="img" aria-label="Vista previa de Raíz Magazine">
+            02
+          </div>
+          <div class="card-cuerpo">
+            <span class="card-categoria">Diseño Editorial</span>
+            <h3 class="card-titulo">Raíz Magazine</h3>
+            <p class="card-descripcion">
+              Dirección de arte y maquetación de una revista
+              cultural independiente. 80 páginas, edición impresa
+              y digital con sistema modular de grillas.
+            </p>
+            <a href="#" class="card-enlace" aria-label="Ver proyecto Raíz Magazine">Ver proyecto →</a>
+          </div>
+        </article>
+
+        <!-- Card 3: Proyecto de packaging -->
+        <article class="card">
+          <div class="card-imagen card-imagen--3" role="img" aria-label="Vista previa de Botánica">
+            03
+          </div>
+          <div class="card-cuerpo">
+            <span class="card-categoria">Packaging</span>
+            <h3 class="card-titulo">Botánica Cosméticos</h3>
+            <p class="card-descripcion">
+              Diseño de empaque sostenible para línea de cuidado
+              personal orgánico. Ilustración botánica, etiquetas
+              y manual de marca.
+            </p>
+            <a href="#" class="card-enlace" aria-label="Ver proyecto Botánica Cosméticos">Ver proyecto →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SECCIÓN 4: CONTACTO
+       Formulario simple de contacto sin JS.
+       El atributo action apunta a un servicio
+       externo que el dev puede configurar después.
+       ========================================= -->
+  <section id="contacto" aria-label="Contacto">
+    <div class="contacto-inner">
+
+      <h2 class="contacto-titulo">¿Hablamos de<br /><span>tu proyecto</span>?</h2>
+      <p class="contacto-subtitulo">
+        Cuéntame en qué estás trabajando y te respondo
+        en menos de 24 horas.
+      </p>
+
+      <!-- action="..." se debe reemplazar con un servicio real (ej. Formspree) -->
+      <form class="formulario" action="#" method="POST" novalidate>
+
+        <div class="fila-doble">
+          <div class="campo-grupo">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Tu nombre"
+              required
+              autocomplete="given-name"
+            />
+          </div>
+          <div class="campo-grupo">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="tu@email.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="asunto">Asunto</label>
+          <input
+            type="text"
+            id="asunto"
+            name="asunto"
+            placeholder="Proyecto de branding, consulta, etc."
+          />
+        </div>
+
+        <div class="campo-grupo">
+          <label for="mensaje">Mensaje</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="5"
+            placeholder="Cuéntame sobre tu proyecto..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="boton-enviar">Enviar mensaje</button>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- =========================================
+       PIE DE PÁGINA
+       ========================================= -->
+  <footer>
+    <p class="footer-texto">
+      &copy; 2026 Sofía Reyes — Diseñadora Gráfica
+      &nbsp;·&nbsp; Hecho con <span>&#9829;</span> y CSS puro
+    </p>
+  </footer>
+
+</body>
+</html>
+
+<!--
+==============================================
+  MEJORAS SUGERIDAS PARA DESPUÉS
+==============================================
+
+  1. ACCESIBILIDAD EN MÓVIL — MENÚ HAMBURGUESA
+     La navegación oculta los links en pantallas
+     pequeñas (< 768 px) con "display: none" porque
+     sin JavaScript no hay toggle. La mejora sería
+     usar el truco del checkbox oculto + label para
+     crear un menú hamburguesa 100 % CSS, o añadir
+     un pequeño script cuando estés listo para JS.
+
+  2. IMÁGENES REALES Y OPTIMIZACIÓN
+     Actualmente los placeholders son bloques de
+     color. Deberías sustituirlos por etiquetas
+     <img> con atributos srcset y sizes para servir
+     imágenes en la resolución correcta según el
+     dispositivo, y añadir loading="lazy" para
+     mejorar el rendimiento de carga inicial.
+
+  3. FORMULARIO FUNCIONAL CON SERVICIO EXTERNO
+     El <form> ahora no envía datos a ningún lado
+     (action="#"). Para hacerlo funcionar sin back-end
+     ni JavaScript puedes conectarlo a Formspree
+     (formspree.io) o Netlify Forms cambiando el
+     atributo action por la URL del endpoint que
+     te proporcionen. Ambos servicios tienen plan
+     gratuito y funcionan solo con HTML puro.
+==============================================
+-->
