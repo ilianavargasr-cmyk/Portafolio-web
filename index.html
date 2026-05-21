@@ -78,14 +78,14 @@
     }
 
     .nav-logo {
-      font-family: var(--fuente-titulo);
-      font-size: 1.25rem;
-      color: var(--color-blanco);
-      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
     }
 
-    .nav-logo span {
-      color: var(--color-acento);
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
     }
 
     .nav-links {
@@ -617,7 +617,9 @@
        ========================================= -->
   <nav aria-label="Navegación principal">
     <div class="nav-inner">
-      <span class="nav-logo">Sofía<span>.</span>Reyes</span>
+      <a href="#hero" class="nav-logo">
+        <img src="images/TR.png" alt="Sofía Reyes — Diseñadora Gráfica" />
+      </a>
       <ul class="nav-links">
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
